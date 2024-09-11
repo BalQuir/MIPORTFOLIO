@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+body {
+    background-color: #000000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Espacio entre el logo y el menú */
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Josefin Slab', serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: black;
+    animation: colorChange 3s infinite, moveUpDown 3s infinite;
+    padding-left: 20px;
+}
+
+@keyframes colorChange {
+    0% { color: #3ab621; }
+    25% { color: #1d41b8; }
+    50% { color: rgb(255, 222, 32); }
+    75% { color: rgb(255, 166, 0); }
+    100% { color: rgb(255, 0, 0); }
+}
+
+@keyframes moveUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Menú centrado */
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Permite que el menú ocupe el espacio restante */
+}
+
+.menu li {
+    position: relative;
+    margin-left: 20px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    display: block;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.menu li a:hover {
+    background-color: rgba(48, 48, 48, 0.2);
+}
+
+/* Submenú desplegable */
+.menu li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    list-style-type: none; /* Elimina los círculos de viñeta */
+}
+
+.menu li ul li {
+    list-style-type: none; /* Asegura que no haya viñetas en los elementos del submenú */
+}
+
+.menu li:hover ul {
+    display: block;
+}
+
+.menu li ul li a {
+    padding: 8px 12px;
+    white-space: nowrap;
+    border-radius: 10px;
+    border: 2px solid white;
+}
+.mi-yo-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 90px 0;
+}
+
+.mi-yo-image {
+    max-width: 300px; /* Ajusta el tamaño según sea necesario */
+    border-radius: 25px;
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+}
+
+.animated-text {
+    max-width: 600px; /* Ajusta el ancho del texto según sea necesario */
+    text-align: left; /* Alineación del texto */
+}
+
+.animated-text {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 50px 0;
+    animation: fadeIn 5s ease-in-out infinite alternate;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 5; transform: translateY(10px); }
+}
+
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.polaroid {
+    background: #fff6cb;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: 0 10px 20px rgba(109, 109, 109, 0.5);
+    transform: rotate(-5deg);
+    transition: transform 0.3s ease-in-out;
+    width: 300px; /* Tamaño fijo para todas las polaroids */
+    text-align: center; /* Centra el texto dentro de la polaroid */
+}
+
+.polaroid img {
+    width: 100%; /* La imagen ocupa todo el ancho disponible */
+    height: 300px; /* Establece una altura fija para las imágenes */
+    object-fit: cover; /* Asegura que las imágenes mantengan su proporción y se recorten si es necesario */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.description {
+    font-size: 0.9em; /* Tamaño del texto reducido para ajustarse a la polaroid */
+    color: #333;
+    margin: 0; /* Elimina el margen para mejor ajuste */
+    text-align: center; /* Centra el texto en la polaroid */
+}
+
+/* Nueva sección de contacto */
+.contact-section {
+    text-align: center;
+    padding: 50px 0;
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+.contact-section h2 {
+    font-family: 'Josefin Slab', serif;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-icon img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.contact-icon:hover img {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+.contact-icon:nth-child(1) img {
+    animation: bounce 1s infinite;
+}
+
+.contact-icon:nth-child(2) img {
+    animation: bounce 1.2s infinite;
+}
+
+.contact-icon:nth-child(3) img {
+    animation: bounce 1.4s infinite;
+}
+
+.contact-icon:nth-child(4) img {
+    animation: bounce 1.6s infinite;
+}
+
+.contact-icon:nth-child(5) img {
+    animation: bounce 1.8s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction:row;
+        align-items: flex-start;
+        padding: 5px;
+        height: 25px;
+    }
+
+    .logo {
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .menu {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .menu li {
+        margin-left: 0;
+        margin-bottom: 4px;
+    }
+
+    .menu li a {
+        padding: 2px 12px; /* Reduce el tamaño del padding para que los botones sean más pequeños */
+        font-size: 12px; /* Ajusta el tamaño de la fuente */
+        border-radius: 10px; /* Reduce el radio de los bordes redondeados */
+    }
+
+    .mi-yo-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mi-yo-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .photo-gallery {
+        flex-direction: column;
+    }
+
+    .polaroid {
+        width: 100%;
+        max-width: 300px;
+    }
+    .icons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .contact-section {
+        padding: 30px 20px;
+    }
+
+    .contact-section h2 {
+        font-size: 24px;
+    }
+
+}
+
+
