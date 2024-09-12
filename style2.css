@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+ }
+ /* Barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Espacio entre el logo y el menú */
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Josefin Slab', serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: black;
+    animation: colorChange 3s infinite, moveUpDown 3s infinite;
+    padding-left: 20px;
+}
+
+@keyframes colorChange {
+    0% { color: #3ab621; }
+    25% { color: #1d41b8; }
+    50% { color: rgb(255, 222, 32); }
+    75% { color: rgb(255, 166, 0); }
+    100% { color: rgb(255, 0, 0); }
+}
+
+@keyframes moveUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Menú centrado */
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1.5; /* Permite que el menú ocupe el espacio restante */
+}
+
+.menu li {
+    position: relative;
+    margin-left: 20px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    display: block;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.menu li a:hover {
+    background-color: rgba(48, 48, 48, 0.2);
+}
+
+/* Submenú desplegable */
+.menu li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    list-style-type: none; /* Elimina los círculos de viñeta */
+}
+
+.menu li ul li {
+    list-style-type: none; /* Asegura que no haya viñetas en los elementos del submenú */
+}
+
+.menu li:hover ul {
+    display: block;
+}
+
+.menu li ul li a {
+    padding: 8px 12px;
+    white-space: nowrap;
+    border-radius: 10px;
+    border: 2px solid white;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    padding: 20px;
+    text-align: center;
+    
+}
+
+.gallery-title {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family:fantasy;
+    margin-top: 100px; /* Para asegurar que el título no quede oculto detrás de la barra de menú */
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    background-color: #1a1a1a;
+    border: 2px solid #fff;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.gallery-break {
+    grid-column: span 4
+    ; /* Ocupa toda la fila y crea un salto de línea */
+    height: 20px; /* Altura del salto (espaciado) */
+}
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(221, 218, 218, 0.808);
+}
+
+.gallery-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 15px;
+    border: 2px solid #fff;
+    
+}
+/* Recuadro de texto en la galería */
+.text-item {
+    background-color: #1a1a1a;
+    border: 2px solid #fff;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+.text-item .info {
+    text-align: justify;
+}
+
+.concept-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.concept-description {
+    font-size: 1em;
+    color: #ccc;
+}
+
+.info {
+    text-align: left;
+}
+
+.art-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.description {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #ccc;
+}
+
+.ficha p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+/* Estilo para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    border: 2px solid white;
+}
+
+#caption {
+    text-align: center;
+    color: white;
+    padding: 10px 0;
+    font-size: 1.2em;
+}
+
+.close {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover, .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Nueva sección de contacto */
+.contact-section {
+    text-align: center;
+    padding: 50px 0;
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+.contact-section h2 {
+    font-family: 'Josefin Slab', serif;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-icon img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.contact-icon:hover img {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+.contact-icon:nth-child(1) img {
+    animation: bounce 1s infinite;
+}
+
+.contact-icon:nth-child(2) img {
+    animation: bounce 1.2s infinite;
+}
+
+.contact-icon:nth-child(3) img {
+    animation: bounce 1.4s infinite;
+}
+
+.contact-icon:nth-child(4) img {
+    animation: bounce 1.6s infinite;
+}
+
+.contact-icon:nth-child(5) img {
+    animation: bounce 1.8s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+@media screen and (max-width: 768px) {
+     .navbar {
+        flex-direction:row;
+        align-items: flex-start;
+        padding: 5px;
+        height: 25px;
+    }
+
+    .logo {
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .menu {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .menu li {
+        margin-left: 0;
+        margin-bottom: 4px;
+    }
+
+    .menu li a {
+        padding: 2px 12px; /* Reduce el tamaño del padding para que los botones sean más pequeños */
+        font-size: 12px; /* Ajusta el tamaño de la fuente */
+        border-radius: 10px; /* Reduce el radio de los bordes redondeados */
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* Dos fotos por fila horizontalmente */
+        gap: 10px; /* Ajusta el espacio entre las imágenes */
+    }
+
+    .gallery-break {
+        grid-column: span 2; /* Asegura que el break ocupe toda la fila */
+        height: 20px; /* Ajusta la altura si es necesario */
+        background-color: transparent; /* O cualquier color de fondo que prefieras */
+    }
+
+    .gallery-title {
+        font-size: 1.5em;
+    }
+    .icons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .contact-section {
+        padding: 30px 20px;
+    }
+
+    .contact-section h2 {
+        font-size: 24px;
+    }
+
+}
